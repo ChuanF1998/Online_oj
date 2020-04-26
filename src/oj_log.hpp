@@ -27,7 +27,7 @@ class LogTime
             time(&sys_time);
             struct tm* st = localtime(&sys_time);
             char buf[30] = {'\0'};
-            snprintf(buf, sizeof(buf) - 1, "%04d-%02d-%02d %02d:%02d:%02d", st->tm_year+ 1970, st->tm_mon + 1, st->tm_mday, st->tm_hour, st->tm_min, st->tm_sec);
+            snprintf(buf, sizeof(buf) - 1, "%04d-%02d-%02d %02d:%02d:%02d", st->tm_year+ 1900, st->tm_mon + 1, st->tm_mday, st->tm_hour, st->tm_min, st->tm_sec);
             timestamp->assign(buf, strlen(buf));
         }
 };
@@ -42,6 +42,7 @@ enum LogLevel
     INFO = 0,
     WARNING,
     ERROR,
+    FATAL,
     DEBUG
 };
 
